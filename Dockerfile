@@ -11,7 +11,6 @@ RUN apt-get update && \
 RUN groupadd tomcat
 RUN useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat
 RUN cd /tmp
-# RUN curl -O https://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.66/bin/apache-tomcat-8.5.66.tar.gz
 RUN curl -O https://mirrors.estointernet.in/apache/tomcat/tomcat-9/v9.0.48/src/apache-tomcat-9.0.48-src.tar.gz
 RUN mkdir /opt/tomcat
 RUN gzip -V
@@ -23,7 +22,7 @@ ADD target/myapp.war /opt/tomcat/webapps
 #RUN update-java-alternatives -l
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64
 Run cd /opt/tomcat/bin
-expose 8090
+expose 8080
 #CMD /opt/tomcat/bin/catalina.sh run && tail -f /opt/tomcat/logs/catalina.out
 Run chmod 777 /opt/tomcat/bin/catalina.sh
 CMD ["/opt/tomcat/bin/catalina.sh", "run"]
